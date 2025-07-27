@@ -1,0 +1,27 @@
+{
+    "version" : "2.0.0",
+    "tasks" : [
+        {
+            "label"   : "Build Naga_W",
+            "type"    : "shell",
+            "command" : "cl",
+            "args"    : [
+                "/EHsc",
+                "/I", "src",
+                "/Fo:build\\",
+                "src\\main.cpp",
+                "src\\commands\\command_dispatch.cpp",
+                "src\\input\\command_loop.cpp",
+                "src\\input\\parser.cpp",
+                "/Fe:n"
+            ],
+
+            "group" : {
+                "kind"      : "build",
+                "isDefault" : true
+            },
+
+            "problemMatcher" : []
+        },
+    ]
+}

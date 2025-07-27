@@ -1,6 +1,8 @@
 #include<iostream>
 #include<string>
 
+#include"../commands/command_dispatch.h"
+
 #include"command_loop.h"
 #include"parser.h"
 
@@ -12,7 +14,7 @@ void commandLoop()
     bool run = true;
     while (run)
     {
-        std::cout << "&>>";
+        std::cout << "&>> ";
         std::getline(std::cin, input);
 
         if (input == "exit" || input == "quit" || input == "cuidate")
@@ -23,6 +25,6 @@ void commandLoop()
 
         Command cmd = parse(input); // struct Command and parse(string) from parser.h
 
-        
+        getCommand(cmd); // getCommand from src/commands/command_dispatch.h
     }
 }
