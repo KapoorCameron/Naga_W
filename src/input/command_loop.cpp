@@ -38,14 +38,7 @@ void commandLoop()
             break;
         }
 
-        else if (input == "test")
-        {
-            std::cout << "booyah\n";
-            continue;
-        }
-
         Command cmd = parse(input); // struct Command and parse(string) from parser.h
-
         getCommand(cmd); // getCommand from src/commands/command_dispatch.h
     }
 }
