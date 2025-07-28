@@ -13,6 +13,7 @@
                 "src\\commands\\command_dispatch.cpp",
                 "src\\input\\command_loop.cpp",
                 "src\\input\\parser.cpp",
+                "src\\utils\\string_utils.cpp",
                 "/Fe:n"
             ],
 
