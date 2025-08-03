@@ -4,11 +4,14 @@
 
 #include"command_dispatch.h"
 
-void getCommand(const Command& cmd) // use a function map/command map
+// The function map/command map that we use to call commands into which we pass cmd.name and cmd.args 
+
+void getCommand(const Command& cmd)
 {
     static const std::unordered_map<std::string, std::function<void(const Command&)>> commandMap = 
     {
         {"help", execute_help},
+        {"cd"  , execute_cd},
     };
 
     auto command = commandMap.find(cmd.name);

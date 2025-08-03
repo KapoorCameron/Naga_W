@@ -4,7 +4,10 @@
 #include<string>
 #include<vector>
 
+#include"../utils/paths.h"
 #include"command_executor.h"
+
+// Here, we parse cmd for cmd.name and cmd.args to execute appropriate function as specified
 
 void execute_help(const Command& cmd)
 {
@@ -19,9 +22,28 @@ void execute_help(const Command& cmd)
     
     std::cout << "\n//For command-specific details, enter \"help (command name)\"\\\\\n";
 
+    // "auto" is type: const std::pair<std::string, std::string>&
     for (const auto& [command_name, description] : commands)
     {
         std::cout << std::left << std::setw(16) << command_name << description << "\n";
     }
     std::cout << "\n";
+}
+
+void execute_cd(const Command& cmd)
+{
+    if (cmd.args.empty())
+    {
+        setCWD(getHomeDirectory());
+    }
+
+    else if (cmd.args[0] == "-")
+    {
+        getPreviousDirectory(); 
+    }
+
+    else
+    {
+        setCWD(cmd.args[0]);
+    }
 }

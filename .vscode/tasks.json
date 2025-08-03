@@ -15,6 +15,7 @@
                 "src\\commands\\command_executor.cpp",
                 "src\\input\\command_loop.cpp",
                 "src\\input\\parser.cpp",
+                "src\\utils\\paths.cpp",
                 "src\\utils\\string_utils.cpp",
                 "/Fe:n"
             ],

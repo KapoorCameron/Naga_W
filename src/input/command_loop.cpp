@@ -2,6 +2,7 @@
 #include<string>
 
 #include"../commands/command_dispatch.h"
+#include"../utils/paths.h"
 #include"../utils/string_utils.h"
 
 #include"command_loop.h"
@@ -16,7 +17,9 @@ void commandLoop()
     bool caseSensitive = false; 
     while (run)
     {
-        std::cout << "&_>> "; 
+        std::string cwd = getCWD().string(); // getCWD() from ../utils/paths.h
+
+        std::cout << cwd << "\n&_>> "; 
         std::getline(std::cin, input);
 
         trim(input); // from src/utils/string_utils.h 
@@ -32,9 +35,15 @@ void commandLoop()
             continue;
         }
 
-        if (input == "exit" || input == "quit" || input == "cuidate")
+        if (input == "exit" || input == "quit")
         {
             std::cout << "Exiting...\n"; 
+            break;
+        }
+
+        if (input == "cuidate")
+        {
+            std::cout << "Saliendo...\n";
             break;
         }
 
