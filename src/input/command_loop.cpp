@@ -19,7 +19,14 @@ void commandLoop()
     {
         std::string cwd = getCWD().string(); // getCWD() from ../utils/paths.h
 
-        std::cout << cwd << "\n&_>> "; 
+        std::string caseMarker = "";
+
+        if (caseSensitive == true)
+        {
+            caseMarker = '!';
+        }
+
+        std::cout << cwd << "\n" << caseMarker << "&_>> "; 
         std::getline(std::cin, input);
 
         trim(input); // from src/utils/string_utils.h 

@@ -1,25 +1,31 @@
+#include<iomanip>
 #include<sstream>
 #include<string>
 #include<vector>
 
 #include"parser.h"
 
+// We need to be able to take quoted arguments 
+
 Command parse(std::string input)
 {
     Command cmd;
     std::istringstream iss(input);
-    std::string token;
-    std::vector<std::string> tokens;
+    std::string arg;
 
-    while (iss >> token)
+    bool firstArg = true;
+    while (iss >> std::quoted(arg))
     {
-        tokens.push_back(token);
-    }
+        if (firstArg)
+        {
+            cmd.name = arg;
+            firstArg = false;
+        }
 
-    cmd.name = tokens[0];
-    for (int i = 1; i < tokens.size(); i++)
-    {
-        cmd.args.push_back(tokens[i]);
+        else
+        {
+            cmd.args.push_back(arg);
+        }
     }
 
     return cmd;

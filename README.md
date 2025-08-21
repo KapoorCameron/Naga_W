@@ -12,3 +12,9 @@ I listen to random documentaries to fall asleep, and played one on South Asian/I
 Paths--
 
 In paths.cpp, the function resolvePath() is used to take any string that's passed into it and "normalize" it into an actual, absolute path. We can use std::getenv() to grab environment variables, in this case we're grabbing the "USERPROFILE" environment variable, which is the path to the user's home directory. We then join the relative path p with the absolute path we got from USERPROFILE to create/resolve the absolute path to the CWD. -- This is crucial for commands like "mkdir" and "cd" because when the user inputs a specific location, the computer (under the hood) turns that location (often just one word) into an entire absolute path that it can work with. Computers work in absolute paths in this regard.
+##
+
+##
+"go" command--
+
+"go" launches an application. In order to do so, we must take user input and format it in a way the Windows API can understand. This entails ensuring all input is in UTF16/Wide format, arguments are quoted properly, and arguments are together in one std::wstring. 

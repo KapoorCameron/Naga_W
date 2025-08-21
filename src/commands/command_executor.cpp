@@ -4,10 +4,35 @@
 #include<string>
 #include<vector>
 
+#include"../w_lean.h"
+
 #include"../utils/paths.h"
 #include"command_executor.h"
 
 // Here, we parse cmd for cmd.name and cmd.args to execute appropriate function as specified
+
+void execute_cd(const Command& cmd)
+{
+    if (cmd.args.empty())
+    {
+        setCWD(getHomeDirectory());
+    }
+
+    else if (cmd.args[0] == "-")
+    {
+        getPreviousDirectory(); 
+    }
+
+    else
+    {
+        setCWD(cmd.args[0]);
+    }
+}
+
+// void execute_go(const Command& cmd)
+// {
+    
+// }
 
 void execute_help(const Command& cmd)
 {
@@ -30,20 +55,8 @@ void execute_help(const Command& cmd)
     std::cout << "\n";
 }
 
-void execute_cd(const Command& cmd)
+void execute_secret(const Command& cmd)
 {
-    if (cmd.args.empty())
-    {
-        setCWD(getHomeDirectory());
-    }
-
-    else if (cmd.args[0] == "-")
-    {
-        getPreviousDirectory(); 
-    }
-
-    else
-    {
-        setCWD(cmd.args[0]);
-    }
+    // list UI commands for later: commands to change theme, play music, 
 }
+

@@ -10,8 +10,11 @@ void getCommand(const Command& cmd)
 {
     static const std::unordered_map<std::string, std::function<void(const Command&)>> commandMap = 
     {
-        {"help", execute_help},
         {"cd"  , execute_cd},
+        {"go"  , execute_go},
+        {"help", execute_help},
+        {"parseltongue", execute_secret},
+        
     };
 
     auto command = commandMap.find(cmd.name);
@@ -23,6 +26,6 @@ void getCommand(const Command& cmd)
 
     else
     {
-        std::cout << "INVALID COMMAND\n";
+        std::cout << "-INVALID COMMAND-\n";
     }
 }
